@@ -30,5 +30,6 @@ interessados.
 ## Atualização 03/06/2023
 
 * Desenvolvemos o projet root (acme-store) como projeto parent, e na sequência incluímos como módulos dependêntes os projetos:
+   * Projeto acme-store (root application)  
    * Cliente Service
    * Card Service
