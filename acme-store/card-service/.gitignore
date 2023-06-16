@@ -8,9 +8,17 @@ target/
 .idea/jarRepositories.xml
 .idea/compiler.xml
 .idea/libraries/
+../.idea/acme-store.iml
+.idea/vcs.xml
+../.idea/
+../.idea/.gitignore
+../.idea/misc.xml
+../.idea/modules.xml
+../.idea/vcs.xml
 *.iws
 *.iml
 *.ipr
+.DS_Store
 
 ### Eclipse ###
 .apt_generated
