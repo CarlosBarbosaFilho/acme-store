@@ -2,6 +2,7 @@ package br.com.acme.application.domain.entity;
 
 import br.com.acme.application.domain.vo.Phone;
 import br.com.acme.application.ports.out.ICreateClientRepository;
+import br.com.acme.application.ports.out.IDeleteClientDomainByIdRepository;
 import br.com.acme.application.ports.out.IGetClientDomainGetByIdRepository;
 import br.com.acme.application.ports.out.IListClientDomainRepository;
 import lombok.AllArgsConstructor;
@@ -34,4 +35,9 @@ public class ClientDomain {
     public ClientDomain getById(IGetClientDomainGetByIdRepository iGetClientDomainGetByIdRepository) {
         return iGetClientDomainGetByIdRepository.execute(this.id);
     }
+
+    public void deleteClientDomain(IDeleteClientDomainByIdRepository iDeleteClientDomainByIdRepository) {
+        iDeleteClientDomainByIdRepository.execute(this.id);
+    }
+
 }

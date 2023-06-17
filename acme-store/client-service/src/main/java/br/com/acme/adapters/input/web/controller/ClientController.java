@@ -6,6 +6,7 @@ import br.com.acme.adapters.input.web.api.response.ClientResponse;
 import br.com.acme.application.domain.entity.ClientDomain;
 import br.com.acme.application.mapper.ConverterDTO;
 import br.com.acme.application.ports.in.ICreateClientDomainUseCase;
+import br.com.acme.application.ports.in.IDeleteClientDomainByIdUseCase;
 import br.com.acme.application.ports.in.IGetClientDomainGetByIdUseCase;
 import br.com.acme.application.ports.in.IListClientDomainUseCase;
 import lombok.AllArgsConstructor;
@@ -20,6 +21,8 @@ public class ClientController implements ClientApi {
     private final ICreateClientDomainUseCase iCreateClientDomainUseCase;
     private final IListClientDomainUseCase iListClientDomainUseCase;
     private final IGetClientDomainGetByIdUseCase iGetClientDomainGetByIdUseCase;
+    private final IDeleteClientDomainByIdUseCase iDeleteClientDomainByIdUseCase;
+
     private final ConverterDTO converterDTO;
     @Override
     public ResponseEntity<ClientResponse> create(ClientRequest clientRequest) {
@@ -43,5 +46,11 @@ public class ClientController implements ClientApi {
         var domain = (ClientDomain) this.iGetClientDomainGetByIdUseCase.execute(id);
         return ResponseEntity.ok((ClientResponse) converterDTO
                 .convertObject(domain, ClientResponse.class));
+    }
+
+    @Override
+    public ResponseEntity<?> delete(Long id) {
+        this.iDeleteClientDomainByIdUseCase.execute(id);
+        return ResponseEntity.noContent().build();
     }
 }

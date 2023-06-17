@@ -23,5 +23,9 @@ public interface ClientApi {
     @ResponseStatus(HttpStatus.OK)
     ResponseEntity<ClientResponse> get(@PathVariable("id") Long id);
 
+    @DeleteMapping("/{id}")
+    @ResponseStatus(HttpStatus.OK)
+    ResponseEntity<?> delete(@PathVariable("id") Long id);
+
 
 }
