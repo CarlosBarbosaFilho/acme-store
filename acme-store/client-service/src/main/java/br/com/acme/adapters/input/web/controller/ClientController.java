@@ -1,6 +1,7 @@
 package br.com.acme.adapters.input.web.controller;
 
 import br.com.acme.adapters.input.web.api.ClientApi;
+import br.com.acme.adapters.input.web.api.exception.errors.ClientNotFundException;
 import br.com.acme.adapters.input.web.api.request.ClientRequest;
 import br.com.acme.adapters.input.web.api.response.ClientResponse;
 import br.com.acme.application.domain.entity.ClientDomain;
@@ -10,6 +11,7 @@ import br.com.acme.application.ports.in.IDeleteClientDomainByIdUseCase;
 import br.com.acme.application.ports.in.IGetClientDomainGetByIdUseCase;
 import br.com.acme.application.ports.in.IListClientDomainUseCase;
 import lombok.AllArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -42,10 +44,14 @@ public class ClientController implements ClientApi {
     }
 
     @Override
-    public ResponseEntity<ClientResponse> get(Long id) {
-        var domain = (ClientDomain) this.iGetClientDomainGetByIdUseCase.execute(id);
-        return ResponseEntity.ok((ClientResponse) converterDTO
-                .convertObject(domain, ClientResponse.class));
+    public ResponseEntity<ClientResponse> get(Long id){
+        try {
+            var domain = (ClientDomain) this.iGetClientDomainGetByIdUseCase.execute(id);
+            return ResponseEntity.ok((ClientResponse) converterDTO
+                    .convertObject(domain, ClientResponse.class));
+        }catch (ClientNotFundException e) {
+            throw new ClientNotFundException(id);
+        }
     }
 
     @Override

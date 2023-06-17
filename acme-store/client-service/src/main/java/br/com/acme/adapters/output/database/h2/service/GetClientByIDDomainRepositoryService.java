@@ -1,5 +1,6 @@
 package br.com.acme.adapters.output.database.h2.service;
 
+import br.com.acme.adapters.input.web.api.exception.errors.ClientNotFundException;
 import br.com.acme.adapters.output.database.h2.repository.ClientRepository;
 import br.com.acme.application.domain.entity.ClientDomain;
 import br.com.acme.application.mapper.ConverterDTO;
@@ -15,7 +16,11 @@ public class GetClientByIDDomainRepositoryService implements IGetClientDomainGet
     private final ConverterDTO converterDTO;
     @Override
     public ClientDomain execute(Long id) {
+        var entity = this.clientRepository.findById(id);
+        if (entity.isEmpty()) {
+            throw new ClientNotFundException(id);
+        }
         return (ClientDomain) converterDTO
-                .convertObject(this.clientRepository.findById(id), ClientDomain.class);
+                .convertObject(entity, ClientDomain.class);
     }
 }
