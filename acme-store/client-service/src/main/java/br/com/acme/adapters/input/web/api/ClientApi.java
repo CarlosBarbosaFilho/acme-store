@@ -18,4 +18,10 @@ public interface ClientApi {
     @GetMapping
     @ResponseStatus(HttpStatus.OK)
     ResponseEntity<List<ClientResponse>> list();
+
+    @GetMapping("/{id}")
+    @ResponseStatus(HttpStatus.OK)
+    ResponseEntity<ClientResponse> get(@PathVariable("id") Long id);
+
+
 }

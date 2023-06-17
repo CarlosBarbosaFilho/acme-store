@@ -6,6 +6,7 @@ import br.com.acme.adapters.input.web.api.response.ClientResponse;
 import br.com.acme.application.domain.entity.ClientDomain;
 import br.com.acme.application.mapper.ConverterDTO;
 import br.com.acme.application.ports.in.ICreateClientDomainUseCase;
+import br.com.acme.application.ports.in.IGetClientDomainGetByIdUseCase;
 import br.com.acme.application.ports.in.IListClientDomainUseCase;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -18,6 +19,7 @@ import java.util.List;
 public class ClientController implements ClientApi {
     private final ICreateClientDomainUseCase iCreateClientDomainUseCase;
     private final IListClientDomainUseCase iListClientDomainUseCase;
+    private final IGetClientDomainGetByIdUseCase iGetClientDomainGetByIdUseCase;
     private final ConverterDTO converterDTO;
     @Override
     public ResponseEntity<ClientResponse> create(ClientRequest clientRequest) {
@@ -34,5 +36,12 @@ public class ClientController implements ClientApi {
         var response = (List<ClientResponse>)
                 converterDTO.convertLIstObjects(this.iListClientDomainUseCase.execute(), ClientResponse.class);
         return ResponseEntity.ok(response);
+    }
+
+    @Override
+    public ResponseEntity<ClientResponse> get(Long id) {
+        var domain = (ClientDomain) this.iGetClientDomainGetByIdUseCase.execute(id);
+        return ResponseEntity.ok((ClientResponse) converterDTO
+                .convertObject(domain, ClientResponse.class));
     }
 }
