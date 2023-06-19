@@ -11,6 +11,7 @@ import br.com.acme.application.ports.in.IDeleteClientDomainByIdUseCase;
 import br.com.acme.application.ports.in.IGetClientDomainGetByIdUseCase;
 import br.com.acme.application.ports.in.IListClientDomainUseCase;
 import lombok.AllArgsConstructor;
+import org.junit.platform.commons.function.Try;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
@@ -28,12 +29,9 @@ public class ClientController implements ClientApi {
     private final ConverterDTO converterDTO;
     @Override
     public ResponseEntity<ClientResponse> create(ClientRequest clientRequest) {
-        var domain = (ClientDomain) converterDTO
-                .convertObject(clientRequest, ClientDomain.class);
-        var response = (ClientResponse) converterDTO
-                .convertObject(this.iCreateClientDomainUseCase.execute(domain), ClientResponse.class);
-
-        return ResponseEntity.ok(response);
+            var domain = (ClientDomain) converterDTO.convertObject(clientRequest, ClientDomain.class);
+            var response = this.iCreateClientDomainUseCase.execute(domain);
+            return ResponseEntity.ok((ClientResponse) converterDTO.convertObject(response, ClientResponse.class));
     }
 
     @Override
