@@ -1,6 +1,5 @@
 package br.com.acme.application.domain.entity;
 
-import br.com.acme.adapters.output.entity.Card;
 import br.com.acme.application.ports.out.ICreateClientRepository;
 import br.com.acme.application.ports.out.IDeleteClientDomainByIdRepository;
 import br.com.acme.application.ports.out.IGetClientDomainGetByIdRepository;
