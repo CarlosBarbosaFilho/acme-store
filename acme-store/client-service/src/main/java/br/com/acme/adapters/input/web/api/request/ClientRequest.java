@@ -12,10 +12,12 @@ import lombok.NoArgsConstructor;
 @Builder
 @Data
 public class ClientRequest {
-    @NotNull(message = "name is not empty")
+    @NotNull(message = "name is empty")
     private String name;
-    @NotBlank(message = "e-mail is not blank")
+    @NotBlank(message = "e-mail is empty")
     private String email;
+    @NotBlank(message = "document is empty")
     private String document;
+    @NotBlank(message = "phone is empty")
     private String phone;
 }

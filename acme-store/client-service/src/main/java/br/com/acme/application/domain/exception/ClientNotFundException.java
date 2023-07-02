@@ -1,4 +1,4 @@
-package br.com.acme.adapters.input.web.api.exception.errors;
+package br.com.acme.application.domain.exception;
 
 public class ClientNotFundException extends RuntimeException{
 

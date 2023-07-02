@@ -5,6 +5,7 @@ import br.com.acme.adapters.input.web.api.response.ClientResponse;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -14,7 +15,7 @@ public interface ClientApi {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    ResponseEntity<ClientResponse> create(@RequestBody ClientRequest clientRequest);
+    ResponseEntity<ClientResponse> create(@Validated @RequestBody ClientRequest clientRequest);
 
     @GetMapping
     @ResponseStatus(HttpStatus.OK)
