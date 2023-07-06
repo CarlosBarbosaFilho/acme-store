@@ -28,7 +28,20 @@
       <!-- Active Column -->
       <ng-container matColumnDef="active">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> Situation </th>
-        <td mat-cell *matCellDef="let row"> {{row.active ? 'Active' : 'Inactive'}}</td>
+        <td style="color: {{row.active ? 'red' : 'green'}}" mat-cell *matCellDef="let row"> {{row.active ? 'Active' : 'Inactive'}}</td>
+      </ng-container>
+
+        <!-- Create At Column -->
+        <ng-container matColumnDef="create_at">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Created </th>
+          <td mat-cell *matCellDef="let row"> {{row.create_at}}</td>
+        </ng-container>
+
+
+          <!-- Update At Column -->
+      <ng-container matColumnDef="update_at">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Updated </th>
+        <td mat-cell *matCellDef="let row"> {{row.update_at}}</td>
       </ng-container>
 
       <ng-container matColumnDef="action">
@@ -37,7 +50,7 @@
           <button mat-icon-button color="primary" (click)="openEditForm(row)">
             <mat-icon>edit</mat-icon>
           </button>
-          <button mat-icon-button color="warn" (click)="check(row.id)">
+          <button mat-icon-button color="primary" (click)="check(row.id)">
             <mat-icon>check</mat-icon>
           </button>
         </td>

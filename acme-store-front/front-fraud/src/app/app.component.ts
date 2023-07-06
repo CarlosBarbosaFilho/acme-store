@@ -12,7 +12,7 @@ import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 export class AppComponent implements OnInit {
 
 
-  displayedColumns: string[] = ['id', 'document', 'active', 'action'];
+  displayedColumns: string[] = ['id', 'document', 'active', 'create_at', 'update_at','action'];
   dataSource! : MatTableDataSource<any>;
 
   constructor(private _dialog: MatDialog, private _service: FraudService) {
