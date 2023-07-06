@@ -10,15 +10,14 @@ import org.springframework.stereotype.Service;
 
 @Service
 @AllArgsConstructor
-public class CreateRepositoryService implements ICreateFraudRepository {
+public class ICreateRepositoryService implements ICreateFraudRepository {
 
     private final FraudRepository fraudRepository;
     private final ConverterDTO converterDTO;
     @Override
     public FraudDomain execute(FraudDomain fraudDomain) {
         var entity = (Fraud) converterDTO.convertObject(fraudDomain, Fraud.class);
-        var domain = (FraudDomain) converterDTO
+        return (FraudDomain) converterDTO
                 .convertObject(this.fraudRepository.save(entity), FraudDomain.class);
-        return domain;
     }
 }

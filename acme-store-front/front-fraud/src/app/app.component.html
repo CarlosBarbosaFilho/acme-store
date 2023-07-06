@@ -1,0 +1,51 @@
+<mat-toolbar color="primary">
+  <span>Fraud System</span>
+  <span class="example-spacer"></span>
+  <button mat-raised-button  (click)="openAddAndEditFraud()">
+    Create Fraud Record
+  </button>
+</mat-toolbar>
+
+
+
+<div class="main-body">
+
+  <div class="table-container">
+    <table mat-table [dataSource]="dataSource" matSort>
+
+      <!-- ID Column -->
+      <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> ID </th>
+        <td mat-cell *matCellDef="let row"> {{row.id}} </td>
+      </ng-container>
+
+      <!-- Document Column -->
+      <ng-container matColumnDef="document">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Document </th>
+        <td mat-cell *matCellDef="let row"> {{row.document}}</td>
+      </ng-container>
+
+      <!-- Active Column -->
+      <ng-container matColumnDef="active">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Situation </th>
+        <td mat-cell *matCellDef="let row"> {{row.active ? 'Active' : 'Inactive'}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="action">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Action </th>
+        <td mat-cell *matCellDef="let row">
+          <button mat-icon-button color="primary" (click)="openEditForm(row)">
+            <mat-icon>edit</mat-icon>
+          </button>
+          <button mat-icon-button color="warn" (click)="check(row.id)">
+            <mat-icon>check</mat-icon>
+          </button>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+
+  </div>
+
