@@ -56,9 +56,17 @@ export class AppComponent implements OnInit {
 
   openEditForm(data: any) {
     console.log('calling update method');
-    // const dialogRef = this._dialog.open(EmpAddEditComponent, {
-    //   data,
-    // });
+    const dialogRef = this._dialog.open(FraudCreateAndUpdateComponent, {
+      data,
+    });
+    console.log(data)
+    dialogRef.afterClosed().subscribe({
+      next: (val) => {
+        if (val) {
+          this.getFrauds();
+        }
+      },
+    });
 
   }
 }

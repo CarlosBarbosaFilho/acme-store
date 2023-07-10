@@ -24,4 +24,8 @@ export class FraudService {
   active_inactive(id: number): Observable<any>  {
     return this._http.get(`http://localhost:8083/api/v1/frauds/check-fraud/${id}`)
   }
+
+  update(id: number, data: any): Observable<any> {
+    return this._http.put(`http://localhost:8083/api/v1/frauds/${id}`, data);
+  }
 }
