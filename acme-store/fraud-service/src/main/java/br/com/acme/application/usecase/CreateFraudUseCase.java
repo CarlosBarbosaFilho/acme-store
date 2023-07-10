@@ -5,11 +5,10 @@ import br.com.acme.application.ports.in.ICreateFraudDomainUseCase;
 import br.com.acme.application.ports.out.ICreateFraudRepository;
 import br.com.acme.utils.UseCase;
 import lombok.AllArgsConstructor;
-import org.springframework.stereotype.Service;
 
 @UseCase
 @AllArgsConstructor
-public class ICreateFraudUseCase implements ICreateFraudDomainUseCase {
+public class CreateFraudUseCase implements ICreateFraudDomainUseCase {
 
     private final ICreateFraudRepository iCreateFraudRepository;
     @Override

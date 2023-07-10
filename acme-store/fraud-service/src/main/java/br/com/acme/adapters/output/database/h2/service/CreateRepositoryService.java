@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 @AllArgsConstructor
-public class ICreateRepositoryService implements ICreateFraudRepository {
+public class CreateRepositoryService implements ICreateFraudRepository {
 
     private final FraudRepository fraudRepository;
     private final ConverterDTO converterDTO;

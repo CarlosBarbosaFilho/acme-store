@@ -16,7 +16,6 @@ public class CreateCardRepositoryService implements ICreateCardRepository {
     @Override
     public CardDomain execute(CardDomain cardDomain) {
         var entity = (Card)  converterDTO.convertObject(cardDomain, Card.class);
-        var domain = (CardDomain) converterDTO.convertObject(this.cardRepository.save(entity), CardDomain.class);
-        return domain;
+        return (CardDomain) converterDTO.convertObject(this.cardRepository.save(entity), CardDomain.class);
     }
 }
