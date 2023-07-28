@@ -3,6 +3,7 @@ package br.com.acme.adapters.input.web.api.exception;
 import br.com.acme.application.domain.exception.ApiErrorsResponse;
 import br.com.acme.application.domain.exception.ClientNotFundException;
 import br.com.acme.application.domain.exception.EmailClientExistsException;
+import br.com.acme.application.domain.exception.ErrorLoginClientException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.MethodArgumentNotValidException;
@@ -15,6 +16,25 @@ import java.util.ArrayList;
 
 @ControllerAdvice
 public class CustomControllerAdvice {
+
+    @ExceptionHandler(ErrorLoginClientException.class)
+    public ResponseEntity<ApiErrorsResponse> handleErrorLoginClientException(ErrorLoginClientException exception,
+                                                                          WebRequest webRequest) {
+        var dataError = ApiErrorsResponse.DataMessageError
+                .builder()
+                .description("Error to login")
+                .date_time(LocalDateTime.now())
+                .status_code(HttpStatus.BAD_REQUEST.value())
+                .message("Email or password is invalid")
+                .build();
+
+        var apiError = ApiErrorsResponse.builder()
+                .fields_required(new ArrayList<>())
+                .details(dataError)
+                .status(HttpStatus.BAD_REQUEST)
+                .build();
+        return new ResponseEntity<ApiErrorsResponse>(apiError, HttpStatus.BAD_REQUEST);
+    }
 
     @ExceptionHandler(ClientNotFundException.class)
     public ResponseEntity<ApiErrorsResponse> handleClientNotFundException(ClientNotFundException exception,

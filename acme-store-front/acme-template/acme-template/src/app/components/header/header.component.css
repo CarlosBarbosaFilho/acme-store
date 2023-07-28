@@ -1,0 +1,13 @@
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+h1 {
+    margin-top: 1rem;
+    border: 1px solid rgb(161, 159, 159);
+    padding: 1rem 10%;
+    border-radius: 2rem;
+    /* background: linear-gradient(93deg, rgba(2,0,36,1) 0%, rgba(162,162,210,1) 0%, rgb(144, 191, 191) 0%, rgba(200,218,224,1) 0%, rgba(223,215,215,1) 0%, rgba(21,186,231,1) 0%, rgba(11,198,242,1) 0%, rgba(11,198,242,1) 0%, rgba(6,205,249,1) 0%, rgba(162,211,226,1) 0%, rgba(8,202,242,1) 10%); */
+}

@@ -1,0 +1,51 @@
+.container {
+    width: 50%;
+    height:50%;
+    margin: auto;
+    /* margin-right: 10%;
+    margin-left: 10%; */
+    padding: 1rem 1rem 3rem 1rem;
+    border-radius: .6rem;
+  }
+  
+  .fullWidth {
+    width: 100%;
+  }
+  
+  h1 {
+    text-align: center;
+  }
+  
+  img {
+    height: 3rem;
+    margin: auto; 
+  }
+  
+  .section {
+    margin-bottom: 1rem;
+    margin-left: 2rem;
+    margin-block-end: auto;
+    display: block;
+  }
+  
+  .example-container mat-form-field + mat-form-field {
+    margin-left: 3px;
+  }
+  
+  .example-right-align {
+    text-align: right;
+  }
+  
+  input.right-align::-webkit-outer-spin-button,
+  input.right-align::-webkit-inner-spin-button {
+    display: none;
+  }
+  
+  input.right-align {
+    -moz-appearance: textfield;
+  }
+  
+  button {
+    margin-top: .5rem;
+  }
+  

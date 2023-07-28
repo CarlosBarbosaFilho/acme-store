@@ -16,10 +16,6 @@ public class GetClientByIDDomainRepositoryService implements IGetClientDomainGet
     private final ConverterDTO converterDTO;
     @Override
     public ClientDomain execute(Long id) {
-//        var entity = this.clientRepository.findById(id);
-//        if (entity.isEmpty()) {
-//            throw new ClientNotFundException(id);
-//        }
         return (ClientDomain) converterDTO
                 .convertObject(this.clientRepository.findById(id), ClientDomain.class);
     }

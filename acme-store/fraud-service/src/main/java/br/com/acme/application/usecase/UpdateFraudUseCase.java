@@ -16,10 +16,7 @@ public class UpdateFraudUseCase implements IUpdateFraudUseCase {
 
     @Override
     public void execute(FraudDomain fraudDomain, Long id) {
-        FraudDomain.builder()
-                .id(id)
-                .document(fraudDomain.getDocument())
-                .build()
-                .update(iGetFraudByIdRepository, iCreateFraudRepository);
+        fraudDomain.setId(id);
+        fraudDomain.update(iGetFraudByIdRepository, iCreateFraudRepository);
     }
 }

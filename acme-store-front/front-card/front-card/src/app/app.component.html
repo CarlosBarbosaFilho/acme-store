@@ -1,0 +1,65 @@
+<mat-toolbar color="basic">
+  <span>Card System</span>
+  <span class="example-spacer"></span>
+  <button mat-raised-button  (click)="openAddAndEditCard()">
+    Create Card
+  </button>
+</mat-toolbar>
+
+
+<div class="main-body">
+
+  <div class="table-container">
+    <table mat-table [dataSource]="dataSource" matSort>
+
+      <!-- ID Column -->
+      <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> ID </th>
+        <td mat-cell *matCellDef="let row"> {{row.id}} </td>
+      </ng-container>
+
+      <!-- Name Column -->
+      <ng-container matColumnDef="card_name">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Name </th>
+        <td mat-cell *matCellDef="let row"> {{row.card_name}}</td>
+      </ng-container>
+
+      <!-- Flag Column -->
+      <ng-container matColumnDef="card_flag">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Flag </th>
+        <td mat-cell *matCellDef="let row"> {{row.card_flag}}</td>
+      </ng-container>
+
+      <!-- Limit Column -->
+      <ng-container matColumnDef="income">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Income </th>
+        <td  mat-cell *matCellDef="let row"> {{row.income | currency:'R$ ':'code'}}</td>
+      </ng-container>
+
+       <!-- Limit Column -->
+       <ng-container matColumnDef="card_limit">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Limit </th>
+        <td mat-cell *matCellDef="let row"> {{row.card_limit | currency:'R$ ':'code'}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="action">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Action </th>
+        <td mat-cell *matCellDef="let row">
+          <button mat-icon-button color="basic" (click)="openEditForm(row)">
+            <mat-icon>edit</mat-icon>
+          </button>
+          <button mat-icon-button color="primary" (click)="delete(row.id)">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+      <tr class="mat-row" *matNoDataRow>
+        <td class="mat-cell" colspan="4">No data"</td>
+      </tr>
+    </table>
+  </div>
+

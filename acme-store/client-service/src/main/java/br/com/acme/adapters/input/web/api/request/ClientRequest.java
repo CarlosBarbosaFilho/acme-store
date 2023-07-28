@@ -20,4 +20,10 @@ public class ClientRequest {
     private String document;
     @NotBlank(message = "phone is empty")
     private String phone;
+    @NotBlank(message = "password is empty")
+    private String password;
+    @NotBlank(message = "income is empty")
+    private String income;
+
+
 }

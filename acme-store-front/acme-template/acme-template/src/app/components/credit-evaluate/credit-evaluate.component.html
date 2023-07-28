@@ -1,0 +1,61 @@
+<div class="container mat-elevation-z8">
+    <form class="section">
+      <h1 class="fullWidth">
+        Perform Credit Assessment
+        <img class="fullWidth" src="assets/img/cards.svg" alt="create client" />
+      </h1>
+  
+      <mat-form-field class="fullWidth">
+        <mat-label>Name</mat-label>
+        <input 
+        readonly
+        [(ngModel)]="client.name"
+        name="name"
+        type="text" matInput required
+        placeholder="Client name">
+        <mat-icon matSuffix>person</mat-icon>
+      </mat-form-field>
+  
+  
+      <mat-form-field class="fullWidth">
+        <mat-label>Document</mat-label>
+        <input
+        readonly
+        [(ngModel)]="client.document"
+        name="document"
+        type="text" 
+        matInput required
+        placeholder="000.000.000-00">
+        <mat-icon matSuffix>article</mat-icon>
+      </mat-form-field>
+
+      <mat-form-field floatLabel="always" class="fullWidth">
+        <mat-label>Income</mat-label>
+        <input 
+        readonly
+        [(ngModel)]="client.income"
+        name="income"
+        type="text" matInput required
+        type="number" class="right-align" />
+        <mat-icon matSuffix>money</mat-icon>
+      </mat-form-field>
+  
+      <button
+        (click)="send()"
+        mat-stroked-button
+        class="fullWidth mat-elevation-z4"
+        color="primary">
+        Send Request
+      </button>
+
+      <button
+        routerLink="../../"
+        mat-stroked-button
+        class="fullWidth mat-elevation-z4"
+        color="warn"
+      >
+        Cancel
+      </button>
+    </form>
+  </div>
+  

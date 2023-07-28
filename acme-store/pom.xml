@@ -13,6 +13,7 @@
     <module>client-service</module>
     <module>card-service</module>
     <module>fraud-service</module>
+      <module>perform-credit-assessment-service</module>
   </modules>
 
   <properties>

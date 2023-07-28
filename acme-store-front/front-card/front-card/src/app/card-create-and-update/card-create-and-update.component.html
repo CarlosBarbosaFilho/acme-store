@@ -1,0 +1,69 @@
+<form [formGroup]="cardForm" (ngSubmit)="createCard()">
+  <div mat-dialog-title>
+    <h2>Create Card</h2>
+  </div>
+
+  <div mat-dialog-content class="content">
+    <div class="row">
+        <mat-form-field appearance="outline">
+          <input
+            required="true"
+            matInput
+            type="text"
+            placeholder="Card Name"
+            formControlName="card_name"
+          />
+        </mat-form-field>
+      </div>
+
+      <!-- <div class="row">
+        <mat-form-field appearance="outline">
+          <input
+            required="true"
+            matInput
+            type="text"
+            placeholder="Flag Name"
+            formControlName="card_flag"
+          />
+      </mat-form-field>
+      </div> -->
+
+      <div class="row">
+        <mat-form-field appearance="outline">
+          <mat-label>Flag Cards</mat-label>
+          <mat-select formControlName="card_flag">
+              <mat-option *ngFor="let card of cards" [value]= "card"> {{card}} </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+
+      <div class="row">
+        <mat-form-field appearance="outline">
+          <input currencyMask [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',' }"
+            required="true"
+            matInput
+            type="text"
+            placeholder="Card Limit"
+            formControlName="card_limit"
+          />
+        </mat-form-field>
+        </div>
+
+      <div class="row">
+      <mat-form-field appearance="outline">
+        <input currencyMask [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',' }"
+          required="true"
+          matInput
+          type="text"
+          placeholder="Icome"
+          formControlName="income"
+        />
+      </mat-form-field>
+      </div>
+
+      <div mat-dialog-actions class="action">
+          <button mat-raised-button type="button" [mat-dialog-close]="false">Cancel</button>
+          <button mat-raised-button color="primary" type="submit">{{data ? 'Update': 'Save'}}</button>
+      </div>
+  </div>
+</form>
