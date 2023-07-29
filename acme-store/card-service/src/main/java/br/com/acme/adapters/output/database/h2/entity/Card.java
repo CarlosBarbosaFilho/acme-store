@@ -16,7 +16,14 @@ import java.math.BigDecimal;
 public class Card {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @SequenceGenerator(
+            name = "card_seq",
+            sequenceName = "card_seq",
+            allocationSize = 1
+    )
+    @GeneratedValue(strategy = GenerationType.SEQUENCE,
+            generator = "card_seq"
+    )
     private Long id;
     private String card_name;
     private String card_flag;
