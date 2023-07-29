@@ -16,6 +16,9 @@ public interface CardApi {
     @ResponseStatus(HttpStatus.CREATED)
     ResponseEntity<CardResponse> create(@RequestBody CardRequest cardRequest);
 
+    @GetMapping("/{income}")
+    @ResponseStatus(HttpStatus.OK)
+    ResponseEntity<List<CardResponse>> getCardsAvailableClient(@PathVariable("income") String income);
     @GetMapping
     @ResponseStatus(HttpStatus.OK)
     ResponseEntity<List<CardResponse>> list();

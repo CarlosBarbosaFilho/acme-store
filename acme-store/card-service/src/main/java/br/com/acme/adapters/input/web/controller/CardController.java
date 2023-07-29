@@ -3,12 +3,10 @@ package br.com.acme.adapters.input.web.controller;
 import br.com.acme.adapters.input.web.api.CardApi;
 import br.com.acme.adapters.input.web.request.CardRequest;
 import br.com.acme.adapters.input.web.response.CardResponse;
+import br.com.acme.adapters.output.database.h2.entity.Card;
 import br.com.acme.application.domain.CardDomain;
 import br.com.acme.application.mapper.ConverterDTO;
-import br.com.acme.application.ports.in.ICreateCardDomainUseCase;
-import br.com.acme.application.ports.in.IDeleteCardDomainUseCase;
-import br.com.acme.application.ports.in.IListCardRepositoryUseCase;
-import br.com.acme.application.ports.in.IUpdateCardDomainUseCase;
+import br.com.acme.application.ports.in.*;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
@@ -25,6 +23,9 @@ public class CardController implements CardApi {
     private final IDeleteCardDomainUseCase iDeleteCardDomainUseCase;
 
     private final IUpdateCardDomainUseCase iUpdateCardDomainUseCase;
+
+    private final IListCardsAvailableClientUseCase iListCardsAvailableClientUseCase;
+
     private final ConverterDTO converterDTO;
 
     @Override
@@ -32,6 +33,14 @@ public class CardController implements CardApi {
         var domain = (CardDomain) converterDTO.convertObject(cardRequest, CardDomain.class);
         var response =  (CardResponse) converterDTO
                 .convertObject(iCreateCardDomainUseCase.execute(domain), CardResponse.class);
+        return ResponseEntity.ok(response);
+    }
+
+    @Override
+    public ResponseEntity<List<CardResponse>> getCardsAvailableClient(String income) {
+        var domain = this.iListCardsAvailableClientUseCase.execute(income);
+        var response = (List<CardResponse>)
+                converterDTO.convertLIstObjects(domain, CardResponse.class);
         return ResponseEntity.ok(response);
     }
 

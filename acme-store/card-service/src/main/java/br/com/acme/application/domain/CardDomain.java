@@ -1,9 +1,6 @@
 package br.com.acme.application.domain;
 
-import br.com.acme.application.ports.out.ICreateCardRepository;
-import br.com.acme.application.ports.out.IDeleteCardRepository;
-import br.com.acme.application.ports.out.IGetCardByIdRepository;
-import br.com.acme.application.ports.out.IListCardRepository;
+import br.com.acme.application.ports.out.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -46,5 +43,9 @@ public class CardDomain {
         card.setIncome(this.income);
         iGetCardByIdRepository.execute(this.id);
         iCreateCardRepository.execute(card);
+    }
+
+    public List<CardDomain> listAvailableCardsClient(IListCardAvailableClientRepository iListCardAvailableClientRepository) {
+        return iListCardAvailableClientRepository.execute(this.income.toString());
     }
 }
