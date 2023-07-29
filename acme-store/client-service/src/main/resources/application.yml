@@ -7,3 +7,6 @@ spring:
     username: sa
     password:
     driverClassName: org.h2.Driver
+card:
+  getcards:
+    url: "http://localhost:8082/api/v1/cards"
