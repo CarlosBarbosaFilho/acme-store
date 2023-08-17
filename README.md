@@ -20,16 +20,3 @@ pasando para o cliente a melhor mensagem possível à deponder do caso que inval
 * Restrição do cartão por falta de pagamento (fatura) - Mensagem morna
 * Restrição do cartão por motivos de fraude - Mensagem quente.
 Em todos os casos apresentados acima, haverá um registro/notificação desse processo em uma base de dados de suporte a fraude.
-
-
-## Atualização do Projeto
-
-* O projeto será atualizado conforme o andamento das aulas, todos os commits serão comentados para dar visibilidade para todos os
-interessados.
-
-## Atualização 03/06/2023
-
-* Desenvolvemos o projet root (acme-store) como projeto parent, e na sequência incluímos como módulos dependêntes os projetos:
-   * Projeto acme-store (root application)  
-   * Cliente Service
-   * Card Service
