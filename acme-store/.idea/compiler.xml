@@ -10,6 +10,7 @@
         <module name="fraud-service" />
         <module name="card-service" />
         <module name="perform-credit-assessment-service" />
+        <module name="service-discovery" />
         <module name="client-service" />
       </profile>
     </annotationProcessing>
