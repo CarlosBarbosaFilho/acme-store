@@ -1,6 +1,7 @@
 server:
   port: 8082
-
+application:
+  name: ms-card-service
 spring:
   datasource:
      driver-class-name: org.postgresql.Driver
@@ -14,3 +15,9 @@ spring:
       hibernate.dialect: org.hibernate.dialect.PostgreSQLDialect
       hibernate.format_sql: true
       hibernate.show-sql: true
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+    registry-with-eureka: false
+    fetch-registry: false
